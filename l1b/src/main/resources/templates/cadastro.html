@@ -12,14 +12,13 @@
 
 </head>
 <body>
-
-	<h1>Bem vindo ao sistema da beleza!</h1>
-	<p>
-		<span>Menu:</span><br /> 
-		<a th:href="@{/cadastrar}"><span>Cadastro de clientes</span></a><br />
-		<a th:href="@{/listar-clientes}"><span>Listagem de clientes</span></a>
-	</p>
-	<br />
+	<a th:href="@{/listar-clientes}"><span>Listagem de clientes</span></a><br/>
+	<h1>Formulário de cadastro de um cliente!!</h1><br/>
+	<form th:action="@{/cadastrar}" method="post">
+	<input name="nome" placeholder="nome do cliente" /><br/>
+	<!--input name="" placeholder="telefone" /><br/-->
+	<input type="submit" />
+	</form>
 
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

@@ -12,14 +12,15 @@
 
 </head>
 <body>
-
-	<h1>Bem vindo ao sistema da beleza!</h1>
-	<p>
-		<span>Menu:</span><br /> 
-		<a th:href="@{/cadastrar}"><span>Cadastro de clientes</span></a><br />
-		<a th:href="@{/listar-clientes}"><span>Listagem de clientes</span></a>
-	</p>
+	<a th:href="@{/cadastrar}">Cadastar mais algum cliente</a><br/>
+	<h1>Listar com todos os clientes!!</h1>
 	<br />
+	<div th:each="pessoa:${pessoas}">
+		<p>
+			<span th:text="${pessoa.nome}"></span>
+		</p>
+		<br />
+	</div>
 
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
