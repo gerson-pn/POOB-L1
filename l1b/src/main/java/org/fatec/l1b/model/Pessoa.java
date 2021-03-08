@@ -9,22 +9,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Pessoa {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Pessoa {
 	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento
-	private long id;
+	protected long id;
 	
 	@Column(nullable = false, unique = false)
-	private String nome;
+	protected String nome;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "idPessoa")
-	private Set<Telefone> telefones = new HashSet<Telefone>();
+	protected Set<Telefone> telefones = new HashSet<Telefone>();
 	
 	public long getId() {
 		return id;

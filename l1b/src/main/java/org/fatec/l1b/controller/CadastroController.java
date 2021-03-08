@@ -1,7 +1,7 @@
 package org.fatec.l1b.controller;
 
 import org.fatec.l1b.db.PessoaRepository;
-import org.fatec.l1b.model.Pessoa;
+import org.fatec.l1b.model.Cliente;
 import org.fatec.l1b.model.Telefone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +19,9 @@ public class CadastroController {
 	}
 
 	@PostMapping("/cadastrar")
-	public String paginaCadastro(Pessoa p, Telefone t) {
-		p.getTelefones().add(t);
-		pr.save(p);
+	public String paginaCadastro(Cliente c, Telefone t) {
+		c.getTelefones().add(t);
+		pr.save(c);
 		return "cadastro";
 	}
 }
