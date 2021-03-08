@@ -1,10 +1,16 @@
 package org.fatec.l1b.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Pessoa {
@@ -15,6 +21,10 @@ public class Pessoa {
 	
 	@Column(nullable = false, unique = false)
 	private String nome;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "idPessoa")
+	private Set<Telefone> telefones = new HashSet<Telefone>();
 	
 	public long getId() {
 		return id;
@@ -30,5 +40,13 @@ public class Pessoa {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Set<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(Set<Telefone> telefones) {
+		this.telefones = telefones;
 	}
 }
