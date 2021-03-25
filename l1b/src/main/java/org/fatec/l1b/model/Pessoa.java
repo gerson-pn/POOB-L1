@@ -1,5 +1,7 @@
 package org.fatec.l1b.model;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,18 +19,18 @@ import javax.persistence.OneToMany;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa {
-	
+
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento
 	protected long id;
-	
+
 	@Column(nullable = false, unique = false)
 	protected String nome;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "idPessoa")
 	protected Set<Telefone> telefones = new HashSet<Telefone>();
-	
+
 	public long getId() {
 		return id;
 	}

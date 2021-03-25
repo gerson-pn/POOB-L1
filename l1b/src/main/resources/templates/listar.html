@@ -17,6 +17,7 @@
 	<br />
 	<div th:each="pessoa:${pessoas}">
 		<p>
+			<span th:text="${pessoa.id}"></span>
 			<span th:text="${pessoa.nome}"></span>
 		</p>
 		<br />
