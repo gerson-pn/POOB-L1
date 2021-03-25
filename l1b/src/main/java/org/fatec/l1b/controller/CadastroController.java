@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+// comentários para "explicação" do cadastro controller
 @Controller
 public class CadastroController {
 	@Autowired
