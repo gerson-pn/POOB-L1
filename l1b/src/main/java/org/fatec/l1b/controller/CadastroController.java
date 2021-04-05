@@ -20,7 +20,7 @@ public class CadastroController {
 
 	@PostMapping("/cadastrar")
 	public String paginaCadastro(Cliente c, Telefone t) {
-		c.getTelefones().add(t);
+		c.getListaTelefones().add(t);
 		pr.save(c);
 		return "cadastro";
 	}

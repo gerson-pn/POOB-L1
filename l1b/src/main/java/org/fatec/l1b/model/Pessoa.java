@@ -1,9 +1,7 @@
 package org.fatec.l1b.model;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,7 +28,8 @@ public abstract class Pessoa {
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "idPessoa")
-	protected Set<Telefone> telefones = new HashSet<Telefone>();
+	@OrderColumn(name = "sequencia")
+	protected List<Telefone> listaTelefones = new ArrayList<Telefone>();
 
 	public long getId() {
 		return id;
@@ -47,11 +47,12 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 
-	public Set<Telefone> getTelefones() {
-		return telefones;
+	public List<Telefone> getListaTelefones() {
+		return listaTelefones;
 	}
 
-	public void setTelefones(Set<Telefone> telefones) {
-		this.telefones = telefones;
+	public void setListaTelefones(List<Telefone> listaTelefones) {
+		this.listaTelefones = listaTelefones;
 	}
+
 }
